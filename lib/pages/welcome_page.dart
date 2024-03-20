@@ -18,26 +18,44 @@ class _WelcomePageState extends State<WelcomePage> {
     return Scaffold(
       body: Center(
         child: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
           children: [
-            Text('Welcome'),
+            SizedBox(height: 60,),
+            Text('Welcome', style: TextStyle(fontWeight: FontWeight.bold, fontSize: 32),),
+            SizedBox(
+              height: 20,
+            ),
             Text('Flutter provides extraordinary opportunities'),
-            //picture
-            Align(child: Image.asset('images/flutter.jpg'), alignment: Alignment.center,),
+            SizedBox(
+              height: 100,
+            ),
+            // picture
+            Align(
+              alignment: Alignment.center,
+              child: Image.asset('images/flutter.jpg'),
+            ),
             // login button
+            SizedBox(
+              height: 20,
+            ),
             TextButton(
+                style:
+                    TextButton.styleFrom(side: BorderSide(color: Colors.black54, width: 2,)),
                 onPressed: () {
                   Navigator.push(context,
                       MaterialPageRoute(builder: (context) => LoginPage()));
                 },
                 child: Text('Login')),
+            SizedBox(
+              height: 10,
+            ),
             // sign in button
             TextButton(
+              style: TextButton.styleFrom(backgroundColor: Colors.blue),
                 onPressed: () {
                   Navigator.push(context,
                       MaterialPageRoute(builder: (context) => SignupPage()));
                 },
-                child: Text('Sign In')),
+                child: Text('Sign In', style: TextStyle(color: Colors.white),)),
           ],
         ),
       ),
