@@ -43,22 +43,28 @@ class _SignupPageState extends State<SignupPage> {
               controller: email,
               decoration: InputDecoration(labelText: 'Email'),
             ),
+            SizedBox(height: 10,),
             // field to enter a new password
             TextField(
+
               controller: password,
               decoration: InputDecoration(labelText: 'Password'),
             ),
+            SizedBox(height: 10,),
             // field to reenter password to confirm password
             TextField(
               controller: confirmPass,
               decoration: InputDecoration(labelText: 'Confirm Password'),
             ),
+            SizedBox(height: 10,),
             // sign up button
             TextButton(onPressed: signUp, child: Text('Sign up')),
+            SizedBox(height: 10,),
             // redirect to Login if account exists
             RichText(
               text: TextSpan(
                 text: 'Already have an account?',
+                style: TextStyle(color: Colors.black),
                 children: <TextSpan>[
                   TextSpan(
                     recognizer: TapGestureRecognizer()
