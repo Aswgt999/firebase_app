@@ -46,6 +46,7 @@ class _LoginPageState extends State<LoginPage> {
             RichText(
               text: TextSpan(
                 text: 'Don\'t have an account?',
+                style: TextStyle(color: Colors.black),
                 children: <TextSpan>[
                   TextSpan(
                     recognizer: TapGestureRecognizer()
@@ -54,7 +55,7 @@ class _LoginPageState extends State<LoginPage> {
                           MaterialPageRoute(
                               builder: (context) => SignupPage())),
                     text: 'Sign up',
-                    style: TextStyle(fontWeight: FontWeight.bold),
+                    style: TextStyle(fontWeight: FontWeight.bold, color: Colors.black),
                   ),
                 ],
               ),
