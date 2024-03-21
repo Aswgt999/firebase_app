@@ -2,7 +2,6 @@
 
 import 'package:firebase_app/pages/login_page.dart';
 import 'package:firebase_app/pages/signup_page.dart';
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
 class WelcomePage extends StatefulWidget {

@@ -1,7 +1,7 @@
 // ignore_for_file: prefer_const_constructors
 
 import 'package:firebase_app/pages/signup_page.dart';
-import 'package:flutter/cupertino.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 
@@ -16,9 +16,18 @@ class _LoginPageState extends State<LoginPage> {
   final email = TextEditingController();
   final password = TextEditingController();
 
-  void login() {
-    print(email.text);
-    print(password.text);
+  void login() async{
+   try{
+   var res =  await FirebaseAuth.instance.signInWithEmailAndPassword(
+       email: email.text,
+       password: password.text,
+     );
+   print(res.user);
+
+   }catch(e){
+     print(e);
+
+   }
   }
 
   @override
@@ -28,20 +37,45 @@ class _LoginPageState extends State<LoginPage> {
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
-            Text('Login'),
+            SizedBox(
+              height: 60,
+            ),
+            Text(
+              'Login',
+              style: TextStyle(fontWeight: FontWeight.bold, fontSize: 24),
+            ),
             Text('Login to your account'),
+            SizedBox(
+              height: 30,
+            ),
             // field to enter email
             TextField(
               controller: email,
-              decoration: InputDecoration(labelText: 'Email'),
+              decoration: InputDecoration(
+                  labelText: 'Email',
+                  border:
+                      OutlineInputBorder()),
+            ),
+            SizedBox(
+              height: 20,
             ),
             // field to enter password
             TextField(
               controller: password,
-              decoration: InputDecoration(labelText: 'Password'),
+              decoration: InputDecoration(
+                  labelText: 'Password', border: OutlineInputBorder()),
+            ),
+            SizedBox(
+              height: 50,
             ),
             // login button
-            ElevatedButton(onPressed: login, child: Text('Login'),),
+            ElevatedButton(
+              onPressed: login,
+              child: Text('Login'),
+            ),
+            SizedBox(
+              height: 30,
+            ),
             // direct to sign up page
             RichText(
               text: TextSpan(
@@ -55,17 +89,20 @@ class _LoginPageState extends State<LoginPage> {
                           MaterialPageRoute(
                               builder: (context) => SignupPage())),
                     text: 'Sign up',
-                    style: TextStyle(fontWeight: FontWeight.bold, color: Colors.black),
+                    style: TextStyle(
+                        fontWeight: FontWeight.bold, color: Colors.black),
                   ),
                 ],
               ),
             ),
             //image
             Align(
+              alignment: Alignment.center,
               child: Image.asset(
                 'images/login.jpg',
+                width: 400,
+                height: 400,
               ),
-              alignment: Alignment.center,
             ),
           ],
         ),
